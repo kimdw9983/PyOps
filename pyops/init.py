@@ -6,6 +6,8 @@ IS_WINDOWS = os.name == 'nt'
 MV = "move" if IS_WINDOWS else "mv"
 RM = "del" if IS_WINDOWS else "rm"
 
+args = sys.argv
+
 magenta = "\x1b[35;20m"
 green = "\x1b[32;20m"
 blue = "\x1b[34m"
