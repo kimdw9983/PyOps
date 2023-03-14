@@ -39,7 +39,9 @@ def run_command(command: str, desc: str, supress_error: bool = False) -> tuple[s
     print(f"{green}SUCCESS")
     return output.decode("utf-8"), None
   except Exception as e:
-    if supress_error : return None, output.decode("utf-8")
+    if supress_error : 
+      print(f"{yellow}SUPRESSED")
+      return None, output.decode("utf-8")
     print(f"{red}FAILED")
     handle_error(e, desc, command)
 
