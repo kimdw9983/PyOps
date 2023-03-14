@@ -1,2 +1,2 @@
 # PyOps
- Pure-Python-script to do some DevOps things
+ Pure-Python-script library integrated with VSCode for some DevOps duties.
