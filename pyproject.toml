@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyops"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["kimdw9983 <93891414+kimdw9983@users.noreply.github.com>"]
 license = "MIT"
