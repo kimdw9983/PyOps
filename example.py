@@ -4,11 +4,13 @@ if "patch" == sys.argv[1] :
   versioning  = sys.argv[1]
 
   if versioning not in ("no_version", "no_change") :
+    title = check_commit()
     output, error = run_command(f"poetry version {versioning}", "versioning")
     version = find_regex(r'to (\d+\.\d+\.\d+)', output)
     print(f"{blue}INFO{reset}\tUpdated version to {yellow}{version}")
+    run_command('git add .', f'{blue}git add .')
+    run_command(f'git commit -am "{title}"', f'{blue}git commit -am "{title}"')
     run_command(f"git tag v{version}", f'git version tag')
-    check_commit()
   else : 
     print(f"{blue}INFO{reset}\tVersioning is disabled, ignoring.")
 
