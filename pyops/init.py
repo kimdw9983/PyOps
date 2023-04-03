@@ -65,7 +65,7 @@ def check_commit(versioning: str) -> None :
   output, _ = run_command("git status", "git commit check")
   commit = find_regex(r"Changes not staged for commit:", output)
   if commit :
-    print(f"{blue}INFO\uncommited change found. you need to commit first to version.")
+    print(f"{blue}INFO\tuncommited change found. you need to commit first to version.")
     print(f"{blue}INFO\tplease check your changes or enter commit title below, press {yellow}ctrl + c{blue} to escape")
     
     title = input(f"{yellow}INPUT\t{reset}")

@@ -6,4 +6,4 @@ if "patch" == sys.argv[1] :
 
   run_command("poetry build --format wheel", "building dist")
   latest = get_latest_file("/dist/*.whl")
-  run_command(f"pip install --upgrade /dist/{latest}", "install upgrade")
+  run_command(f"pip install --upgrade dist/{latest}", "install upgrade")
