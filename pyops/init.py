@@ -2,7 +2,7 @@ import subprocess, sys, re, signal, os
 
 IS_WINDOWS = os.name == 'nt'
 
-#TODO: make function
+#TODO: make this function
 MV = "move" if IS_WINDOWS else "mv"
 RM = "del" if IS_WINDOWS else "rm"
 
@@ -57,3 +57,14 @@ def find_regex(pattern: str, text: str) -> str | None :
   if len(match) > 1 :
     return print("regex matches more than one, try change pattern.")
   return match[0] if match else None
+
+def check_commit() -> None :
+  output, _ = run_command("git status", "git commit check")
+  commit = find_regex(r"Changes not staged for commit:", output)
+  if commit :
+    print(f"{blue}INFO\uncommited change found. you need to commit first to version.")
+    print(f"{blue}INFO\tplease check your changes or enter commit title below, press {yellow}ctrl + c{blue} to escape")
+    
+    title = input(f"{yellow}INPUT\t{reset}")
+    run_command('git add .', f'{blue}git add .')
+    run_command(f'git commit -am "{title}"', f'{blue}git commit -am "{title}"')
