@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "batch build(no version)",
+      "type": "python",
+      "request": "launch",
+      "program": "example.py",
+      "args": [
+          "patch", // "major", "minor", "patch", "no_version"
+        ],
+      "console": "integratedTerminal",
+			"cwd": "",
+    }
+  ]
+}
