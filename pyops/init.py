@@ -58,14 +58,14 @@ def find_regex(pattern: str, text: str) -> str | None :
     return print("regex matches more than one, try change pattern.")
   return match[0] if match else None
 
-def check_commit() -> str :
+def check_commit(prompt: bool=False) -> bool :
   output, _ = run_command("git status", "git commit check")
   commit = find_regex(r"Changes not staged for commit:", output)
-  if commit :
+  if commit and prompt :
     print(f"{blue}INFO\tuncommited change found. you need to commit first to version.")
     print(f"{blue}INFO\tplease check your changes or enter commit title below, press {yellow}ctrl + c{blue} to escape")
     
-    return input(f"{yellow}INPUT\t{reset}")
+  return bool(commit)
     
 
 def get_latest_file(pattern: str="", directory: str="") -> str | None :

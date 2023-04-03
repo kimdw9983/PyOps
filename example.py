@@ -4,7 +4,7 @@ if "patch" == sys.argv[1] :
   versioning  = sys.argv[1]
 
   if versioning not in ("no_version", "no_change") :
-    title = check_commit()
+    title = input(f"{yellow}INPUT\t{reset}") if check_commit(True) else "version bump"
     output, error = run_command(f"poetry version {versioning}", "versioning")
     version = find_regex(r'to (\d+\.\d+\.\d+)', output)
     print(f"{blue}INFO{reset}\tUpdated version to {yellow}{version}")
