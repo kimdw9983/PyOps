@@ -58,11 +58,7 @@ def find_regex(pattern: str, text: str) -> str | None :
     return print("regex matches more than one, try change pattern.")
   return match[0] if match else None
 
-def check_commit(versioning: str) -> bool :
-  if versioning in ("no_change", "no_version") :
-    print(f"{blue}INFO{reset}\tVersioning is disabled, ignoring.")
-    return False
-
+def check_commit() -> bool :
   output, _ = run_command("git status", "git commit check")
   commit = find_regex(r"Changes not staged for commit:", output)
   if commit :
@@ -72,7 +68,6 @@ def check_commit(versioning: str) -> bool :
     title = input(f"{yellow}INPUT\t{reset}")
     run_command('git add .', f'{blue}git add .')
     run_command(f'git commit -am "{title}"', f'{blue}git commit -am "{title}"')
-    return True
 
 def get_latest_file(pattern: str="", directory: str="") -> str | None :
   if not pattern and not directory :
